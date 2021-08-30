@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="node_modules/complex.js/complex.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+         body{
+            background: #000;
+            overflow: hidden; 
+            display: flex;
+            justify-content: flex-end;
+            align-items: center; 
+            flex-direction: column;
+            padding : 0;
+            margin: 0;
+            font-family: 'Roboto Mono', monospace;
+            max-height: 100vh;
+            width:100vw;
+            color: #009926;
+        }
+        canvas{
+            padding : 0;
+            margin: 0;
+            transform: rotateX(180Deg) rotate(-90deg);
+        }
+        button{
+            border: 1px solid #009926;
+            border-radius: 5%;
+            background: none;
+            font-family: inherit;
+            color: inherit;
+        }
+
+        .container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            width:90%
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" oncontextmenu="return false;"></canvas>
+    <div class="container">
+        <div id ="iterations"></div>
+        <div id ="progress"></div>
+        <div id="buttons">
+
+            <button id="save" onclick="save()">DOWNLOAD</button>
+            <button id="init" onclick="init()">RESET</button>
+        </div>
+        
+        
+    </div>
+
+    <script src="index.js"></script>
+    <a id="link"></a>
+</body>
+</html>

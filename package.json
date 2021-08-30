@@ -1,0 +1,17 @@
+{
+  "name": "mandlebrot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "complex.js": "^2.0.15",
+    "gpu.js": "^2.11.4",
+    "serve": "^12.0.0"
+  }
+}
