@@ -17,6 +17,18 @@ let x_range
 let y_range 
 let x 
 let y 
+const LOADING_MESSAGES = [
+    "We need to go deeper !",
+    "There is no spoon.",
+    "Yo dawg, i heard you like fractals.",
+    "Hold my beer.",
+    "Hmm, Deja vu.",
+    "Infinite.",
+    "Limitless.",
+    "Chaos.",
+    "The stuff that dreams are made of.",
+    "Open the pod doors, please HAL."
+]
 
 function init(){
     progress("Processing, please wait...")
@@ -132,7 +144,7 @@ let zoom = function(pos_x,pos_y){
     y = y+y_range*pos_y/HEIGHT - y_range*ZOOM/2
     y_range = y_range*ZOOM
     
-    max_iter = Math.floor(max_iter + 200/(ZOOM*1.25))
+    max_iter = Math.floor(max_iter + 200/(ZOOM*1.15))
 
     console.log({pos_x},
         {pos_y},
@@ -152,7 +164,7 @@ let zoomOut = function(pos_x,pos_y){
     y = y+y_range*pos_y/HEIGHT - (y_range/ZOOM)/2
     y_range = y_range/ZOOM
     
-    if(max_iter != 200) max_iter = Math.floor(max_iter - 200/(ZOOM*1.25))
+    if(max_iter != 200) max_iter = Math.floor(max_iter - 200/(ZOOM*1.15))
 
     console.log({pos_x},
         {pos_y},
@@ -175,7 +187,7 @@ function getMousePos(canvas, evt) {
 }
 
 let lcHandler = function (evt) {
-    progress("Processing, please wait...")
+    progress(LOADING_MESSAGES[Math.floor(Math.random()*LOADING_MESSAGES.length)])
     setTimeout(()=>{
         var mousePos = getMousePos(canvas, evt);
     //console.log('x : ' + (x+x_range*mousePos.x/WIDTH) + ', y : ' + -(y+y_range*mousePos.y/HEIGHT));
@@ -186,7 +198,7 @@ let lcHandler = function (evt) {
 }
 
 let rcHandler = function (evt) {
-    progress("Processing, please wait...")
+    progress(LOADING_MESSAGES[Math.floor(Math.random()*LOADING_MESSAGES.length)])
     setTimeout(()=>{
         var mousePos = getMousePos(canvas, evt);
         console.log('x : ' + (x+x_range*mousePos.x/WIDTH) + ', y : ' + -(y+y_range*mousePos.y/HEIGHT));
