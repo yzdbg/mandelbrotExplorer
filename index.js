@@ -1,7 +1,7 @@
 
-const ASPECT_RATIO = 1.5
-const HEIGHT = 720;
-const WIDTH = HEIGHT * 1.5;
+const ASPECT_RATIO = window.innerHeight/window.innerWidth
+const HEIGHT = window.innerHeight;
+const WIDTH =  window.innerWidth;
 const ZOOM = 0.5
 
 const canvas = document.getElementById('canvas');
@@ -21,10 +21,17 @@ let y
 function init(){
     progress("Processing, please wait...")
     max_iter = 200
-    x_range = 3.6
-    y_range = 2.2
-    x = -2.4
-    y = -1.1
+    if(HEIGHT>WIDTH){
+        x_range = 3
+        y_range = x_range*ASPECT_RATIO
+    }
+    else{
+        
+        y_range = 2.2
+        x_range = y_range/ASPECT_RATIO
+    }
+    x = -x_range*0.666
+    y = -y_range/2
     render(x, x+x_range, y, y+y_range)
 }
 
@@ -169,20 +176,24 @@ function getMousePos(canvas, evt) {
 
 let lcHandler = function (evt) {
     progress("Processing, please wait...")
-    var mousePos = getMousePos(canvas, evt);
-    console.log('x : ' + (x+x_range*mousePos.x/WIDTH) + ', y : ' + -(y+y_range*mousePos.y/HEIGHT));
+    setTimeout(()=>{
+        var mousePos = getMousePos(canvas, evt);
+    //console.log('x : ' + (x+x_range*mousePos.x/WIDTH) + ', y : ' + -(y+y_range*mousePos.y/HEIGHT));
     canvas.removeEventListener("click", lcHandler)
     zoom(mousePos.x,mousePos.y);
     canvas.addEventListener("click", lcHandler, false)
+    }, 1)
 }
 
 let rcHandler = function (evt) {
     progress("Processing, please wait...")
-    var mousePos = getMousePos(canvas, evt);
-    console.log('x : ' + (x+x_range*mousePos.x/WIDTH) + ', y : ' + -(y+y_range*mousePos.y/HEIGHT));
-    canvas.removeEventListener("contextmenu", rcHandler)
-    zoomOut(mousePos.x,mousePos.y);
-    canvas.addEventListener("contextmenu", rcHandler, false)
+    setTimeout(()=>{
+        var mousePos = getMousePos(canvas, evt);
+        console.log('x : ' + (x+x_range*mousePos.x/WIDTH) + ', y : ' + -(y+y_range*mousePos.y/HEIGHT));
+        canvas.removeEventListener("contextmenu", rcHandler)
+        zoomOut(mousePos.x,mousePos.y);
+        canvas.addEventListener("contextmenu", rcHandler, false)
+    },1)
 }
 function getMousePos(canvas, evt) {
     var rect = canvas.getBoundingClientRect();
