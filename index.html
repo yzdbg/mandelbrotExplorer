@@ -47,10 +47,26 @@
             width:100%;
             background: rgba(0, 0, 0, 0.66)
         }
+        #help{
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10;
+            height: 20%;
+            width: 50%;
+            min-width: 300px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            border-radius: 10px;
+            transition: opacity 0.3s ease-out;
+        }
     </style>
 </head>
 <body>
     <canvas id="canvas" oncontextmenu="return false;"></canvas>
+
     <div class="container">
         <div id ="iterations"></div>
         <div id ="progress"></div>
@@ -59,10 +75,14 @@
             <button id="save" onclick="save()">DOWNLOAD</button>
             <button id="init" onclick="init()">RESET</button>
         </div>
-        
-        
     </div>
 
+    <div id="help">
+        <h2>Hey there!</h2>
+        Left click to zoom anywhere; and Right click to zoom out.
+        If you get lost, you can just Reset.
+        <button onclick="dismiss()">Got it !</button>
+    </div>
     <script src="index.js"></script>
     <a id="link"></a>
 </body>
