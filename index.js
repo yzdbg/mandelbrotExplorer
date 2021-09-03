@@ -214,13 +214,17 @@ function getMousePos(canvas, evt) {
         y: evt.clientY - rect.top
     };
 }
-canvas.addEventListener("click", lcHandler, false);
-canvas.addEventListener("contextmenu", rcHandler, false);
 
 let dismiss = function(){
     let card = document.getElementById("help")
     card.style.opacity = 0;
-    setTimeout(()=>card.style.visibility = "hidden",300)
+    setTimeout(()=>{
+
+    card.style.visibility = "hidden",300
+    canvas.addEventListener("click", lcHandler, false);
+    canvas.addEventListener("contextmenu", rcHandler, false);
+
+    init()
+    })
 }
 
-init()
