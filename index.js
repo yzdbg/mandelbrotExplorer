@@ -214,7 +214,7 @@ function getMousePos(canvas, evt) {
         y: evt.clientY - rect.top
     };
 }
-
+//renders initial state
 let dismiss = function(){
     let card = document.getElementById("help")
     card.style.opacity = 0;
